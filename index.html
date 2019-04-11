@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Waktu</title>
+  </head>
+  <body>
+    <script src="moment.js"></script>
+    <script src="moment-id.js"></script>
+    <script src="duration.js"></script>
+    <div id="waktu"></div>
+    <script>
+      function hitungMundur(element = document.getElementById("waktu"), waktu_sekarang = new Date(), waktu_kedatangan = '2019-06-02 00:00', format = "D [Hari], H [Jam] m [Menit] s [Detik]")
+      {
+        var now = moment(waktu_sekarang);
+        var end = moment(waktu_kedatangan);
+        var duration = moment.duration(end.diff(now));
+        var days = duration.asDays();
+        element.innerHTML = duration.format(format);
+      }
+      
+      setInterval(function(){
+        // jalankan fungsi hitungMundur
+        hitungMundur(document.getElementById("waktu"), new Date(), '2019-04-21 00:00')
+      }, 1000);
+    </script>
+  </body>
+</html>
